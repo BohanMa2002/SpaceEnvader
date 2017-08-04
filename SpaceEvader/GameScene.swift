@@ -30,9 +30,22 @@ class GameScene: SKScene {
     ball.position = CGPoint(x: xCord, y: yCord)
         
     addChild(ball)
+        
+    
+        
+    let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
+        
+    swipeUp.direction = .up
+        
+    view.addGestureRecognizer(swipeUp)
     }
-
- 
+    
+    func swipeUp(sender: UISwipeGestureRecognizer)
+    {
+        print ("swiped up")
+    }
+    
+    
     
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
@@ -67,8 +80,29 @@ class GameScene: SKScene {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        
+        let bullet = SKSpriteNode()
+        bullet.color = UIColor.green
+        bullet.size = CGSize (width: 5, height: 5)
+        bullet.position = CGPoint (x: ball.position.x , y: ball.position.y)
+        addChild(bullet)
+        
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: self)
+        let vector = CGVector(dx: -(ball.position.x - touchLocation.x), dy: -(ball.position.y - touchLocation.y))
+        
+        let projectileAction = SKAction.squence
+            ([
+            SKAction.repeat(
+            SKAction.move(by: vector, duration: 0.5), count: 10),
+            SKAction.wait(forDuration: 0.5),
+            SKAction.removeFromParent()
+            ])
+        bullet.run(projectileAction)
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
