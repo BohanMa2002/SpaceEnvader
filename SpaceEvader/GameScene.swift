@@ -34,18 +34,26 @@ class GameScene: SKScene {
     
         
     let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
-        
+    //let swipeDown: UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
+   // let swipeLeft = UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+    //let swipeRight = UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
     swipeUp.direction = .up
         
     view.addGestureRecognizer(swipeUp)
     }
     
-    func swipeUp(sender: UISwipeGestureRecognizer)
+    @objc func swipedUp(sender: UISwipeGestureRecognizer)
     {
         print ("swiped up")
     }
+    /*
+    func swipedDown(sender: UISwipeGestureRecognizer)
+    {
+        print ("Swiped Doen")
+    }
     
-    
+    func
+ */
     
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
@@ -94,10 +102,8 @@ class GameScene: SKScene {
         let touchLocation = touch.location(in: self)
         let vector = CGVector(dx: -(ball.position.x - touchLocation.x), dy: -(ball.position.y - touchLocation.y))
         
-        let projectileAction = SKAction.squence
-            ([
-            SKAction.repeat(
-            SKAction.move(by: vector, duration: 0.5), count: 10),
+        let projectileAction = SKAction.sequence([
+            SKAction.repeat(SKAction.move(by: vector, duration: 0.5), count: 10),
             SKAction.wait(forDuration: 0.5),
             SKAction.removeFromParent()
             ])
