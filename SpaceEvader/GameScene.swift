@@ -2,8 +2,8 @@
 //  GameScene.swift
 //  SpaceEvader
 //
-//  Created by iD Student on 8/3/17.
-//  Copyright © 2017 iD Tech. All rights reserved.
+//  Created by Bohan Ma on 8/3/17.
+//  Copyright © Bohan Ma. All rights reserved.
 //
 
 import SpriteKit
@@ -20,6 +20,11 @@ class GameScene: SKScene {
     let ballSpeed: CGFloat = 100.0
     
     override func didMove(to view: SKView) {
+        
+    func random() -> CGFloat
+    {
+        return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+    }
     
     backgroundColor = SKColor.darkGray
     let xCord = size.width * 0.5
@@ -32,14 +37,14 @@ class GameScene: SKScene {
         
     addChild(ball)
     
-    let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
-    let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
-    let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+    let swipeUp  :  UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
+    let swipeDown:  UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
+    let swipeLeft:  UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
     let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
         
-    swipeUp.direction = .up
-    swipeDown.direction = .down
-    swipeLeft.direction = .left
+    swipeUp.direction    = .up
+    swipeDown.direction  = .down
+    swipeLeft.direction  = .left
     swipeRight.direction = .right
     
         
@@ -50,6 +55,7 @@ class GameScene: SKScene {
 
     }
     
+    //func for swipe up
     @objc func swipedUp(sender: UISwipeGestureRecognizer)
     {
         print ("swiped up")
@@ -66,6 +72,7 @@ class GameScene: SKScene {
         ball.run(actionMove)
     }
     
+    //func for swipe down
     @objc func swipedDown(sender: UISwipeGestureRecognizer)
     {
         print("Swiped Down")
@@ -82,6 +89,7 @@ class GameScene: SKScene {
         ball.run(actionMove)
     }
     
+    //func for swipe left
     @objc func swipedLeft(sender: UISwipeGestureRecognizer)
     {
         print("swiped Left")
@@ -99,6 +107,7 @@ class GameScene: SKScene {
         ball.run(actionMove)
     }
     
+    //func for swipe right
     @objc func swipedRight(senter: UISwipeGestureRecognizer)
     {
         print("swiped Right")
@@ -114,6 +123,9 @@ class GameScene: SKScene {
         ball.run(actionMove)
     }
     
+    
+    
+    //touch detection func
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
@@ -122,6 +134,7 @@ class GameScene: SKScene {
         }
     }
     
+    //touch detection func
     func touchMoved(toPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
@@ -130,6 +143,7 @@ class GameScene: SKScene {
         }
     }
     
+    //touch detection func
     func touchUp(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
@@ -147,6 +161,8 @@ class GameScene: SKScene {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
     
+    
+    //tap, and the following will happen:
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }

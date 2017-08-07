@@ -2,8 +2,8 @@
 //  GameViewController.swift
 //  SpaceEvader
 //
-//  Created by iD Student on 8/3/17.
-//  Copyright © 2017 iD Tech. All rights reserved.
+//  Created by Bohan Ma on 8/3/17.
+//  Copyright © Bohan Ma. All rights reserved.
 //
 
 import UIKit

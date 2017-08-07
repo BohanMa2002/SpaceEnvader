@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940C889E1F38BDD9000FD529 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C889D1F38BDD9000FD529 /* Enemy.swift */; };
 		941719AE1F3398600047C41C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941719AD1F3398600047C41C /* AppDelegate.swift */; };
 		941719B21F3398600047C41C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 941719B11F3398600047C41C /* Actions.sks */; };
 		941719B41F3398600047C41C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941719B31F3398600047C41C /* GameScene.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		940C889D1F38BDD9000FD529 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		941719AA1F3398600047C41C /* SpaceEvader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceEvader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		941719AD1F3398600047C41C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		941719B11F3398600047C41C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -58,14 +60,15 @@
 		941719AC1F3398600047C41C /* SpaceEvader */ = {
 			isa = PBXGroup;
 			children = (
+				941719B51F3398600047C41C /* GameViewController.swift */,
 				941719AD1F3398600047C41C /* AppDelegate.swift */,
 				941719B11F3398600047C41C /* Actions.sks */,
-				941719B31F3398600047C41C /* GameScene.swift */,
-				941719B51F3398600047C41C /* GameViewController.swift */,
-				941719B71F3398600047C41C /* Main.storyboard */,
-				941719BA1F3398600047C41C /* Assets.xcassets */,
-				941719BC1F3398600047C41C /* LaunchScreen.storyboard */,
 				941719BF1F3398600047C41C /* Info.plist */,
+				941719BA1F3398600047C41C /* Assets.xcassets */,
+				941719B71F3398600047C41C /* Main.storyboard */,
+				941719BC1F3398600047C41C /* LaunchScreen.storyboard */,
+				941719B31F3398600047C41C /* GameScene.swift */,
+				940C889D1F38BDD9000FD529 /* Enemy.swift */,
 			);
 			path = SpaceEvader;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				940C889E1F38BDD9000FD529 /* Enemy.swift in Sources */,
 				941719B41F3398600047C41C /* GameScene.swift in Sources */,
 				941719B61F3398600047C41C /* GameViewController.swift in Sources */,
 				941719AE1F3398600047C41C /* AppDelegate.swift in Sources */,
