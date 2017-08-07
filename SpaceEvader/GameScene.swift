@@ -21,11 +21,31 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-    func random() -> CGFloat
-    {
-        return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
-    }
-    
+        func addenemy ()
+        {
+            print("BUG SPAWNING")
+            var bug : Enemy
+            bug = Enemy (imageNamed: "bugImage")
+            
+            bug.size.height = 35
+            bug.size.width = 35
+            
+            let randomY = random() * ((size.height - bug.size.height/2)-bug.size.height/2) + bug.size.height/2
+            
+            bug.position = CGPoint(x: size.width - bug.size.width/2, y: randomY)
+            addChild(bug)
+            
+            var moveBug: SKAction
+            moveBug = SKAction.move(to: CGPoint(x: -size.width , y: randomY), duration: 5.0)
+            bug.run(moveBug)
+           
+        }
+        
+        func random() -> CGFloat {
+            
+            return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+            
+        }
     backgroundColor = SKColor.darkGray
     let xCord = size.width * 0.5
     let yCord = size.height * 0.5
@@ -52,7 +72,7 @@ class GameScene: SKScene {
     view.addGestureRecognizer(swipeDown)
     view.addGestureRecognizer(swipeLeft)
     view.addGestureRecognizer(swipeRight)
-
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addenemy), SKAction.wait(forDuration: 1.0)])))
     }
     
     //func for swipe up

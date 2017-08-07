@@ -23,26 +23,5 @@ class Enemy: SKSpriteNode
     {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func addenemy ()
-    {
-        var bug : Enemy
-        bug = Enemy (imageNamed: "Bugimage")
-        
-        bug.size.height = 35
-        bug.size.width = 50
-        
-        let randomY = random() * ((size.height - bug.size.height/2)-bug.size.height/2) + bug.size.height/2
-        
-        bug.position = CGPoint(x: size.width = bug.size.width/2, y: randomY)
-        addChild(bug)
-        
-        var moveBug: SKAction
-        moveBug = SKAction.move(to: CGPoint(x: size.view + bug.size.view * 2, y: randomY), duration, (5.0))
-        bug.run(moveBug)
-        SKAction.removeFromParent
-        
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(addenemy), SKAction.wait(forDuration: 1.0)])))
-        
-    }
+
 }

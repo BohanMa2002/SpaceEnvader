@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,14 +14,66 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="SpaceEvader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-yx-cbY">
+                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Exit"/>
+                                <connections>
+                                    <segue destination="7Up-SC-1Yh" kind="show" id="3YV-gV-JvX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-343" y="114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4Zm-Pa-nE3">
+            <objects>
+                <viewController id="7Up-SC-1Yh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V8E-rb-e1f">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Ls-Hn-ck3">
+                                <rect key="frame" x="278" y="87" width="110" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="SpaceEnvader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHg-1r-NWT">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="170"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oO-D4-odn">
+                                        <rect key="frame" x="0.0" y="170" width="110" height="30"/>
+                                        <state key="normal" title="Restart"/>
+                                        <connections>
+                                            <segue destination="BV1-FR-VrT" kind="show" id="pUP-mW-Eju"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Ls-Hn-ck3" firstAttribute="top" secondItem="hkZ-bX-ZT0" secondAttribute="top" constant="87" id="2Mm-n4-zJM"/>
+                            <constraint firstItem="9Ls-Hn-ck3" firstAttribute="leading" secondItem="hkZ-bX-ZT0" secondAttribute="leading" constant="278" id="7y0-3A-uZn"/>
+                            <constraint firstItem="hkZ-bX-ZT0" firstAttribute="bottom" secondItem="9Ls-Hn-ck3" secondAttribute="bottom" constant="88" id="H4d-IS-AGl"/>
+                            <constraint firstItem="hkZ-bX-ZT0" firstAttribute="trailing" secondItem="9Ls-Hn-ck3" secondAttribute="trailing" constant="279" id="dq0-DD-JSE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hkZ-bX-ZT0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A4v-0a-ccD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="478.11094452773619" y="112.8"/>
         </scene>
     </scenes>
 </document>
