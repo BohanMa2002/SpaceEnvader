@@ -30,30 +30,44 @@ class GameScene: SKScene {
     ball.position = CGPoint(x: xCord, y: yCord)
         
     addChild(ball)
+    
+    let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
+    let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
+    let swipeLeft = UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+    let swipeRight = UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
         
+    swipeUp.direction = .up
+    swipeDown.direction = .down
+    swipeLeft.direction = .left
+    swipeRight.direction = .right
     
         
-    let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
-    //let swipeDown: UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
-   // let swipeLeft = UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
-    //let swipeRight = UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
-    swipeUp.direction = .up
-        
     view.addGestureRecognizer(swipeUp)
+    view.addGestureRecognizer(swipeDown)
+    view.addGestureRecognizer(swipeLeft)
+    view.addGestureRecognizer(swipeRight)
+
     }
     
     @objc func swipedUp(sender: UISwipeGestureRecognizer)
     {
         print ("swiped up")
     }
-    /*
+    
     func swipedDown(sender: UISwipeGestureRecognizer)
     {
-        print ("Swiped Doen")
+        print("Swiped Down")
     }
     
-    func
- */
+    func swipedLeft(sender: UISwipeGestureRecognizer)
+    {
+        print("swiped Left")
+    }
+    
+    func swipedRight(senter: UISwipeGestureRecognizer)
+    {
+        print("swiped Right")
+    }
     
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
