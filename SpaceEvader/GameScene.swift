@@ -16,7 +16,8 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
-    let ball = SKSpriteNode(imageNamed: "ballIcon")
+    let ball = SKSpriteNode(imageNamed: "xcodeicon.png")
+    let ballSpeed: CGFloat = 100.0
     
     override func didMove(to view: SKView) {
     
@@ -33,8 +34,8 @@ class GameScene: SKScene {
     
     let swipeUp: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
     let swipeDown: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown))
-    let swipeLeft = UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
-    let swipeRight = UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
+    let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+    let swipeRight: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
         
     swipeUp.direction = .up
     swipeDown.direction = .down
@@ -52,21 +53,65 @@ class GameScene: SKScene {
     @objc func swipedUp(sender: UISwipeGestureRecognizer)
     {
         print ("swiped up")
+        
+        var actionMove: SKAction
+        if (ball.position.y + ballSpeed >= size.height)
+        {
+            actionMove = SKAction.move(to: CGPoint(x : ball.position.x , y: size.height - ball.size.height / 2), duration: 0.5 )
+        }
+        else
+        {
+            actionMove = SKAction.move(to: CGPoint (x : ball.position.x , y: ball.position.y + ballSpeed), duration: 0.5)
+        }
+        ball.run(actionMove)
     }
     
-    func swipedDown(sender: UISwipeGestureRecognizer)
+    @objc func swipedDown(sender: UISwipeGestureRecognizer)
     {
         print("Swiped Down")
+        
+        var actionMove: SKAction
+        if (ball.position.y - ballSpeed <= 0)
+        {
+            actionMove = SKAction.move(to: CGPoint(x : ball.position.x , y: ball.size.height / 2), duration: 0.5)
+        }
+        else
+        {
+            actionMove = SKAction.move(to: CGPoint (x: ball.position.x, y: ball.position.y - ballSpeed), duration: 0.5)
+        }
+        ball.run(actionMove)
     }
     
-    func swipedLeft(sender: UISwipeGestureRecognizer)
+    @objc func swipedLeft(sender: UISwipeGestureRecognizer)
     {
         print("swiped Left")
+        
+        
+        var actionMove: SKAction
+        if (ball.position.x + ballSpeed <= size.height)
+        {
+            actionMove = SKAction.move(to: CGPoint(x: ball.size.width / 2 , y: ball.position.y), duration: 0.5)
+        }
+        else
+        {
+        actionMove = SKAction.move(to: CGPoint(x: ball.position.x - ballSpeed, y: ball.position.y), duration: 0.5)
+        }
+        ball.run(actionMove)
     }
     
-    func swipedRight(senter: UISwipeGestureRecognizer)
+    @objc func swipedRight(senter: UISwipeGestureRecognizer)
     {
         print("swiped Right")
+        var actionMove: SKAction
+        if (ball.position.x + ballSpeed >= size.width)
+        {
+            actionMove = SKAction.move(to: CGPoint(x: size.width - ball.size.width / 2 , y: ball.position.y ), duration: 0.5)
+        }
+        else
+        {
+        actionMove = SKAction.move(to: CGPoint(x: ball.position.x + ballSpeed, y: ball.position.y), duration: 0.5)
+        }
+        ball.run(actionMove)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -106,9 +151,9 @@ class GameScene: SKScene {
     {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
         
-        let bullet = SKSpriteNode()
-        bullet.color = UIColor.green
-        bullet.size = CGSize (width: 5, height: 5)
+        let bullet = SKSpriteNode(imageNamed: "ball.png")
+        //bullet.color = UIColor.green
+        bullet.size = CGSize (width: 20, height: 20)
         bullet.position = CGPoint (x: ball.position.x , y: ball.position.y)
         addChild(bullet)
         
